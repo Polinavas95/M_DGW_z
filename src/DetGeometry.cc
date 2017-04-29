@@ -21,10 +21,16 @@ G4VPhysicalVolume* DetGeometry::Construct(){
     G4LogicalVolume* gas_tubsLog = new G4LogicalVolume(gas_tubs,world_mat,"GasLog_Tubs");
     gas_tubsLog->SetVisAttributes(G4Color(0.0, 1.0, 1.0));
     new G4PVPlacement(0,G4ThreeVector(), gas_tubsLog, "Gaspvp_Tubs", logicWorld, false, 0);
+    G4Tubs* pb_tubs = new G4Tubs("Pb_solid", 0,WorkLength/2.,WorkLength/40,0,360);
+    G4Material* myPb = nist->FindOrBuildMaterial("G4_Pb");
+    G4LogicalVolume* pb_tubsLog = new G4LogicalVolume(pb_tubs,myPb,"Log_Pb_Tubs");
+    new G4PVPlacement(0,G4ThreeVector(0,0,WorkLength/2+WorkLength/40), pb_tubsLog, "pvp_Pb_Tubs", logicWorld, false, 0);
+    pb_tubsLog->SetVisAttributes(G4Color(0.0, 1.0, 0.0));
+
     G4Tubs* det_tubs = new G4Tubs("Det_solid", 0,WorkLength/4.,WorkLength/20,0,360);
     G4LogicalVolume* det_tubsLog = new G4LogicalVolume(det_tubs,world_mat,"Log_Tubs");
     det_tubsLog->SetVisAttributes(G4Color(1.0, 1.0, 1.0));
-    new G4PVPlacement(0,G4ThreeVector(0,0,WorkLength/2+WorkLength/20), det_tubsLog, "pvp_Tubs", logicWorld, false, 0);
+    new G4PVPlacement(0,G4ThreeVector(0,0,WorkLength/2+WorkLength/20+WorkLength/20), det_tubsLog, "pvp_Det_Tubs", logicWorld, false, 0);
     return physWorld;
 }
 
