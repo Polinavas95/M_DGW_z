@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 3.6)
 set(NAME M_DGW_4)
 project(${NAME})
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-set(CMAKE_PREFIX_PATH /home/idalov/geant4/geant4-install))
+
+set(CMAKE_PREFIX_PATH /home/student/geant4/geant4-install)
 
 option(WITH_GEANT4_UIVIS "Build project with Geant4 UI and Vis drivers" ON)
 if(WITH_GEANT4_UIVIS)
@@ -19,7 +19,7 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 file(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cc)
 file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 
-add_executable(${NAME} main.cc ${sources} ${headers})
+add_executable(${NAME} main.cc ${sources} ${headers} src/RunAction.cc include/RunAction.hh src/StepAction.cc include/StepAction.hh src/EventAction.cc include/EventAction.hh)
 target_link_libraries(${NAME} ${Geant4_LIBRARIES})
 
 
@@ -27,7 +27,7 @@ set(BDSCRIPTS
         init_vis.mac
         run.mac
         vis.mac
-        spectrum.txt
+
         )
 
 foreach(_script ${BDSCRIPTS})
