@@ -31,6 +31,5 @@ void RunAction::EndOfRunAction(const G4Run* aRun) {
 }
 
 void RunAction::AddEvent(G4double energy) {
-    auto it = result->lower_bound(energy);
-    it->second++;
+   result->lower_bound(energy)->second++;
 }
