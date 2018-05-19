@@ -1,8 +1,11 @@
 //
 // Created by student on 27.04.18.
 //
-
+#include <fstream>
 #include "EventAction.hh"
+
+using namespace std;
+
 EventAction::EventAction(RunAction* runAct) :run(runAct) {
 
 }
@@ -16,6 +19,7 @@ void EventAction::BeginOfEventAction(const G4Event* anEvent) {
 }
 
 void EventAction::EndOfEventAction(const G4Event* anEvent) {
+
     run->AddEvent(EnergyDep);
 }
 

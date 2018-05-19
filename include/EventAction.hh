@@ -8,6 +8,7 @@
 
 #include "RunAction.hh"
 #include <G4UserEventAction.hh>
+#include <G4String.hh>
 
 class RunAction;
 
@@ -18,7 +19,9 @@ public:
     void BeginOfEventAction(const G4Event* anEvent);
     void EndOfEventAction(const G4Event* anEvent);
     void AddEnDep(G4double en);
+    void Data(G4String name, G4double Energy);
 private:
+
     RunAction * run;
     G4double EnergyDep;
 };
