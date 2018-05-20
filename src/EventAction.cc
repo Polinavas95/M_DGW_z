@@ -26,7 +26,7 @@ void EventAction::EndOfEventAction(const G4Event* anEvent) {
         fout << it.first << " | " << it.second << "\n";
     }
     for (auto it: *res) {
-        if((it.second > 0.5) && (i<=0.4))
+  //      if((it.second > 0.5) && (<=0.4))
 
     run->AddEvent(EnergyDep);}
 }
@@ -36,4 +36,4 @@ void EventAction::AddEvent(G4String Name,G4double energy){
         res->emplace(Name, energy);//функция принимает параметры, которые будут перенаправлены конструктору объекта, хранящегося в контейнере
     }
     res->find(Name)->second += energy;
-}}
+}
