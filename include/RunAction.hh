@@ -19,6 +19,7 @@ public:
 
 private:
     std::map<G4double, G4int>* result;
+    G4double box1;
 };
 
 #endif //M_DGW_4_RUNACTION_HH

@@ -15,7 +15,7 @@ class StepAction :public G4UserSteppingAction {
 public:
     StepAction(EventAction* eventAction) {};
     ~StepAction() {};
-    void UserSteppingAction(const G4Step*);
+    void UserSteppingAction(const G4Step* step);
 private:
     EventAction * event;
 };

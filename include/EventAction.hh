@@ -9,7 +9,7 @@
 #include "RunAction.hh"
 #include <G4UserEventAction.hh>
 #include <G4String.hh>
-
+using namespace std;
 class RunAction;
 
 class EventAction : public G4UserEventAction {
@@ -18,10 +18,9 @@ public:
     ~EventAction();
     void BeginOfEventAction(const G4Event* anEvent);
     void EndOfEventAction(const G4Event* anEvent);
-    void AddEnDep(G4double en);
-    void Data(G4String name, G4double Energy);
+    void AddEvent(G4String Name,G4double energy);
 private:
-
+    map<G4String, G4double> *res;
     RunAction * run;
     G4double EnergyDep;
 };

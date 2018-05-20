@@ -10,7 +10,7 @@
 
 void StepAction::UserSteppingAction(const G4Step* step) {
     if (step->GetTotalEnergyDeposit()&&step->GetTrack()->GetVolume()->GetLogicalVolume()->GetMaterial()->GetName() == "box_LOG"){
-      event->Data(step->GetTrack()->GetVolume()->GetName(),step->GetTotalEnergyDeposit());
+      event->AddEnDep(step->GetTrack()->GetVolume()->GetName(),step->GetTotalEnergyDeposit());
     }
 
 }

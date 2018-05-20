@@ -17,10 +17,10 @@ DetGeometry::~DetGeometry() {}
 
 G4VPhysicalVolume* DetGeometry::Construct(){
 
-G4Box *box = new G4Box("box", 40.* cm, 40. * cm, 40. * cm);
+G4Box *box = new G4Box("box", 20.* cm, 20. * cm, 20. * cm);
 	auto box_log = new G4LogicalVolume(box, nist->FindOrBuildMaterial("G4_BGO"), "box_LOG");
 	box_log->SetVisAttributes(G4Colour::Red());
-	new G4PVPlacement(0, G4ThreeVector(10.*cm, 0, 0.), box_log, "box_PV", logicWorld, false, 0);
+	new G4PVPlacement(0, G4ThreeVector(0, 0, 0.), box_log, "box_PV", logicWorld, false, 0);
 
 
     return physWorld;

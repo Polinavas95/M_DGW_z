@@ -20,6 +20,7 @@ RunAction::~RunAction() {
 
 void RunAction::BeginOfRunAction(const G4Run* aRun) {
     result->clear();
+    box1=0;
     G4int nStep = 100000;
     G4double eMax = 50 * keV;
     for (int i = 0; i < nStep; i++)
@@ -35,6 +36,9 @@ void RunAction::EndOfRunAction(const G4Run* aRun) {
 }
 
 
-void RunAction::AddEvent(G4double energy) {
+void RunAction::AddEvent(G4String Name, G4double energy) {
    result->lower_bound(energy)->second++;
+    if(Name == "box1") {
+        box1++;
+    }
 }
