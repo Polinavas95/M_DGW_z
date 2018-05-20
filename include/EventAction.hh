@@ -7,6 +7,7 @@
 
 
 #include "RunAction.hh"
+#include "StepAction.hh"
 #include <G4UserEventAction.hh>
 #include <G4String.hh>
 using namespace std;
@@ -23,6 +24,7 @@ private:
     map<G4String, G4double> *res;
     RunAction * run;
     G4double EnergyDep;
+
 };
 
 

@@ -36,9 +36,9 @@ void RunAction::EndOfRunAction(const G4Run* aRun) {
 }
 
 
-void RunAction::AddEnDep(G4String Name,G4double energy){
-   result->lower_bound(energy)->second++;
-    if(Name == "box1") {
+void RunAction::AddEnergy(G4String name,G4double Energy){
+   result->lower_bound(Energy)->second++;
+    if(name == "box1") {
         box1++;
     }
 }

@@ -13,11 +13,17 @@ class EventAction;
 
 class StepAction :public G4UserSteppingAction {
 public:
+    StepAction(G4double Mel):mel(Mel){};
+    G4double getMel();
     StepAction(EventAction* eventAction) {};
     ~StepAction() {};
     void UserSteppingAction(const G4Step* step);
+
 private:
+    G4double mel;
     EventAction * event;
+
+
 };
 
 #endif //M_DGW_4_STEPACTION_HH

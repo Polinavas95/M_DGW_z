@@ -16,7 +16,8 @@ public:
     ~RunAction();
     void BeginOfRunAction(const G4Run* aRun);
     void EndOfRunAction(const G4Run* aRun);
-    void AddEnDep (G4String Name,G4double energy);
+    void AddEnDep (G4double energy);
+    void AddEnergy(G4String name,G4double Energy);
 
 private:
     std::map<G4double, G4int>* result;

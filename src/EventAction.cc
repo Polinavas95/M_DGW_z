@@ -2,9 +2,12 @@
 // Created by student on 27.04.18.
 //
 #include <fstream>
+#include <regexp.h>
 #include "EventAction.hh"
-
+#include "StepAction.hh"
 using namespace std;
+//class StepAction;
+StepAction obj;
 
 EventAction::EventAction(RunAction* runAct) :run(runAct) {
 
@@ -19,6 +22,7 @@ void EventAction::BeginOfEventAction(const G4Event* anEvent) {
 }
 
 void EventAction::EndOfEventAction(const G4Event* anEvent) {
+
     ofstream fout("../result.txt",
                   std::ios_base::app); //Автоматически переставляет указатель текущего символа потока в конец
     fout.clear();
@@ -26,9 +30,9 @@ void EventAction::EndOfEventAction(const G4Event* anEvent) {
         fout << it.first << " | " << it.second << "\n";
     }
     for (auto it: *res) {
-  //      if((it.second > 0.5) && (<=0.4))
+  if((it.second <= 0.5) && (obj.getMel()==2)){
 
-    run->AddEvent(EnergyDep);}
+    run->AddEnDep(EnergyDep);}}
 }
 
 void EventAction::AddEvent(G4String Name,G4double energy){
