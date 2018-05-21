@@ -10,13 +10,13 @@ ActionInit::~ActionInit()
 
 void ActionInit::Build() const
 {
+    auto runAct = new RunAction;
+    auto eventAction = new EventAction(runAct);
     SetUserAction(new PrimaryGen());
 
-    RunAction * run=new RunAction;
-    SetUserAction(run);
-
-    EventAction* eventAction=new EventAction(run);
-    SetUserAction(eventAction);
 
     SetUserAction(new StepAction(eventAction));
+    SetUserAction(eventAction);
+    SetUserAction(runAct);
+
 }

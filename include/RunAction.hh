@@ -14,14 +14,14 @@ class RunAction : public G4UserRunAction {
 public:
     RunAction();
     ~RunAction();
-    void BeginOfRunAction(const G4Run* aRun);
-    void EndOfRunAction(const G4Run* aRun);
+    void BeginOfRunAction(const G4Run* aRun) override;
+    void EndOfRunAction(const G4Run* aRun) override;
     void AddEnDep (G4double energy);
-    void AddEnergy(G4String name,G4double Energy);
+    void AddEvent(G4String name,G4double Energy);
 
 private:
     std::map<G4double, G4int>* result;
-    G4double box1;
+    G4double tubs;
 };
 
 #endif //M_DGW_4_RUNACTION_HH

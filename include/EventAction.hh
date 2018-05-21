@@ -17,13 +17,14 @@ class EventAction : public G4UserEventAction {
 public:
     EventAction(RunAction* runAct);
     ~EventAction();
-    void BeginOfEventAction(const G4Event* anEvent);
-    void EndOfEventAction(const G4Event* anEvent);
-    void AddEvent(G4String Name,G4double energy);
+
+    virtual void BeginOfEventAction(const G4Event* anEvent);
+    virtual void EndOfEventAction(const G4Event* anEvent);
+    void Dat(G4String Name,G4double energy);
 private:
     map<G4String, G4double> *res;
-    RunAction * run;
     G4double EnergyDep;
+    RunAction * run;
 
 };
 
