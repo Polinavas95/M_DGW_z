@@ -29,9 +29,10 @@ void EventAction::EndOfEventAction(const G4Event* anEvent) {
     for (auto it: *res) {
         fout << it.first << " | " << it.second << "\n";
         if((it.first == "gamma") && (it.second >=4.4*MeV)) {
+
             run->AddEvent(it.first, it.second);
-           // cout<<"gammaEn= "<<it.second<<endl;
         }
+        cout<<"gammaEn= "<<it.second<<endl;
     }
 }
 

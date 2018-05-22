@@ -29,6 +29,7 @@ void RunAction::EndOfRunAction(const G4Run* aRun) {
     ofstream fout("../result.txt");
     for (auto it: *result){
         fout << it.first << " | " << it.second << '\n';
+
 }
     fout <<"\ngtubs="<<tubs<<endl;
          fout.close();
