@@ -17,11 +17,11 @@ G4Loader::G4Loader(int argc, char** argv){
     runManager->SetUserInitialization(physicsList);
     runManager->SetUserInitialization(new ActionInit());
 
-    std::ofstream   fout("/dev/null");
-    std::streambuf* cout_sbuf = std::cout.rdbuf();
-    G4cout.rdbuf(fout.rdbuf());
+//    std::ofstream   fout("/dev/null");
+//    std::streambuf* cout_sbuf = std::cout.rdbuf();
+//    G4cout.rdbuf(fout.rdbuf());
     runManager->Initialize();
-    G4cout.rdbuf(cout_sbuf);
+//    G4cout.rdbuf(cout_sbuf);
 #ifdef G4VIS_USE
     // Initialize visualization
     visManager = new G4VisExecutive;

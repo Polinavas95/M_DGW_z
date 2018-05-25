@@ -11,10 +11,11 @@
 using namespace std;
 
 void StepAction::UserSteppingAction(const G4Step* step) {
-    if (step->GetTrack()->GetParticleDefinition()->GetParticleName()=="gamma" &&
-            step->GetTrack()->GetKineticEnergy()>=4.4)
-    event->Dat(step->GetTrack()->GetParticleDefinition()->GetParticleName(),step->GetTrack()->GetKineticEnergy());
-
+    if (step->GetTrack()->GetVolume()->GetName()=="tubs"){
+    event->Dat(step->GetTrack()->GetParticleDefinition()->GetParticleName(),step->GetTrack()->GetTotalEnergy());}
+//    if (step->GetTrack()->GetVolume()->GetName()=="tubs"
+//        && step->GetTrack()->GetParticleDefinition()->GetParticleName()=="gamma"){
+//        event->Dat(step->GetTrack()->GetParticleDefinition()->GetParticleName(),step->GetTrack()->GetTotalEnergy());}
 //cout<<"Gamma ="<<tubs<<endl;
 }
 //G4double StepAction::getMel(){

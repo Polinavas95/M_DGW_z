@@ -27,6 +27,7 @@ void RunAction::BeginOfRunAction(const G4Run* aRun) {
 
 void RunAction::EndOfRunAction(const G4Run* aRun) {
     ofstream fout("../result.txt");
+    fout.clear();
     for (auto it: *result){
         fout << it.first << " | " << it.second << '\n';
 
@@ -38,8 +39,5 @@ void RunAction::EndOfRunAction(const G4Run* aRun) {
 
 void RunAction::AddEvent(G4String name,G4double Energy){
    result->lower_bound(Energy)->second++;
-    if(name == "gamma") {
-
         tubs++;
-    }
 }
