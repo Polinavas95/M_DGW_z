@@ -20,11 +20,13 @@ public:
 
     virtual void BeginOfEventAction(const G4Event* anEvent);
     virtual void EndOfEventAction(const G4Event* anEvent);
-    void Dat(G4String Name,G4double energy);
+    void Dat(G4double energy);
+
 private:
-    map<G4String, G4double> *res;
+    G4double res;
     G4double EnergyDep;
     RunAction * run;
+
 
 };
 

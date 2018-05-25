@@ -7,12 +7,11 @@
 #include "EventAction.hh"
 #include "StepAction.hh"
 using namespace std;
-//class StepAction;
-StepAction obj();
+
 
 EventAction::EventAction(RunAction* runAct) :run(runAct) {
     run=runAct;
-    res=new map<G4String, G4double>;
+
 }
 
 EventAction::~EventAction() {
@@ -20,26 +19,14 @@ EventAction::~EventAction() {
 }
 
 void EventAction::BeginOfEventAction(const G4Event* anEvent) {
+    res=0;
 }
 
 void EventAction::EndOfEventAction(const G4Event* anEvent) {
-
-    ofstream fout("../result.txt",ios_base::app); //Автоматически переставляет указатель текущего символа потока в конец
-    fout.clear();
-    for (auto it: *res) {
-        fout << it.first << " | " << it.second << "\n";
-        if((it.first == "gamma") && (it.second >=4.4)) {
-
-            run->AddEvent(it.first, it.second);
-        }
-        cout<<"gammaEn= "<<it.second<<endl;
-    }
+            run->AddEvent(res);
 }
 
-void EventAction::Dat(G4String Name,G4double energy){
-    for (auto it: *res) {
-    if( res->find(Name) == res->end()) {
-        res->emplace(Name, energy);//функция принимает параметры, которые будут перенаправлены конструктору объекта, хранящегося в контейнере
-    }
-    res->find(Name)->second += energy;
-}}
+void EventAction::Dat(G4double energy){
+    res += energy;
+
+}

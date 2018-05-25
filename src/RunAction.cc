@@ -11,8 +11,7 @@ using namespace std;
 
 
 RunAction::RunAction() {
-    result = new std::map<G4double, G4int>;
-    tubs=0;
+    result=new std::map<G4double ,G4int>;
 }
 
 RunAction::~RunAction() {
@@ -21,23 +20,22 @@ RunAction::~RunAction() {
 
 void RunAction::BeginOfRunAction(const G4Run* aRun) {
     result->clear();
-    tubs=0;
+    int nStep=500;
+    G4double eMax=14.*MeV;
+    for(int i=0;i<nStep;i++){
+        result->insert(std::pair<G4double,G4int>(i*eMax/nStep,0));
+    }
+
 
 }
 
 void RunAction::EndOfRunAction(const G4Run* aRun) {
-    ofstream fout("../result.txt");
-    fout.clear();
-    for (auto it: *result){
-        fout << it.first << " | " << it.second << '\n';
+    for (auto &it: *result){
+        cout << it.first << " | " << it.second << '\n';
 
+    }
 }
-    fout <<"\ngtubs="<<tubs<<endl;
-         fout.close();
+void RunAction::AddEvent(G4double Energy){
+    result->lower_bound(Energy)->second++;
 }
 
-
-void RunAction::AddEvent(G4String name,G4double Energy){
-   result->lower_bound(Energy)->second++;
-        tubs++;
-}

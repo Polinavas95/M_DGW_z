@@ -62,8 +62,8 @@ G4VPhysicalVolume* DetGeometry::Construct() {
     ofstream fout("../result.txt");
     fout<<"\n"<<Pb1;
     fout<<"\n"<<C1;
-    fout<<"\n\n\n\n"<<box_log->GetMass(false)/g<<endl;
-    fout<<"\n\n\n\n"<<box1_log->GetMass(false)/g<<endl;
+//    fout<<"\n\n\n\n"<<box_log->GetMass(false)/g<<endl;
+//    fout<<"\n\n\n\n"<<box1_log->GetMass(false)/g<<endl;
     fout.close();
 
 
